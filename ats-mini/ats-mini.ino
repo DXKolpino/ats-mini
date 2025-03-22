@@ -443,10 +443,11 @@ typedef struct
               Turn your receiver on with the encoder push button pressed at first time to RESET the eeprom content.
 */
 Band band[] = {
-    {"VHF", FM_BAND_TYPE, 6400, 10800, 10390, 1, 0},
-    {"MW1", MW_BAND_TYPE, 150, 1720, 810, 3, 4},
-    {"MW2", MW_BAND_TYPE, 531, 1701, 783, 2, 4},
-    {"MW3", MW_BAND_TYPE, 1700, 3500, 2500, 1, 4},
+    {"VHF2", FM_BAND_TYPE, 8750, 10800, 9900, 1, 0},
+    {"VHF1", FM_BAND_TYPE, 6400, 8750, 6630, 1, 0},
+    {"LW", MW_BAND_TYPE, 153, 522, 225, 3, 4},
+    {"MW1", MW_BAND_TYPE, 513, 1728, 999, 2, 4},
+    {"MW2", MW_BAND_TYPE, 1719, 3500, 2500, 1, 4},
     {"80M", MW_BAND_TYPE, 3500, 4000, 3700, 0, 4},
     {"SW1", SW_BAND_TYPE, 4000, 5500, 4885, 1, 4},
     {"SW2", SW_BAND_TYPE, 5500, 6500, 6000, 1, 4},
@@ -460,25 +461,26 @@ Band band[] = {
     {"SW8", SW_BAND_TYPE, 17000, 18000, 17500, 1, 4},
     {"15M", SW_BAND_TYPE, 20000, 21400, 21100, 0, 4},
     {"SW9", SW_BAND_TYPE, 21400, 22800, 21500, 1, 4},
-    {"CB ", SW_BAND_TYPE, 26000, 28000, 27500, 0, 4},
+    {"CB", SW_BAND_TYPE, 26000, 28000, 27500, 0, 4},
     {"10M", SW_BAND_TYPE, 28000, 30000, 28400, 0, 4},
-    {"ALL", SW_BAND_TYPE, 150, 30000, 15000, 0, 4} // All band. LW, MW and SW (from 150kHz to 30MHz)
-};
-
+    {"ALL", SW_BAND_TYPE, 153, 30000, 15000, 0, 4},
+    {"AIR", SW_BAND_TYPE, 8000, 27000, 9300, 0, 4}
+};                                             
 const int lastBand = (sizeof band / sizeof(Band)) - 1;
 int bandIdx = 0;
 
 //int tabStep[] = {1, 5, 10, 50, 100, 500, 1000};
 //const int lastStep = (sizeof tabStep / sizeof(int)) - 1;
 
+
 // Calibration (per band). Size needs to be the same as band[]
 // Defaults
-int16_t bandCAL[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+int16_t bandCAL[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 // Mode (per band). Size needs to be the same as band[] and mode needs to be appropriate for bandType
 // Example bandType = FM_BAND_TYPE, bandMODE = FM. All other BAND_TYPE's, bandMODE = AM/LSB/USB
 // Defaults
-uint8_t bandMODE[] = {FM, AM, AM, AM, LSB, AM, AM, LSB, AM, AM, AM, AM, USB, AM, AM, USB, AM, AM, USB, AM};
+uint8_t bandMODE[] = {FM, FM, AM, AM, AM, LSB, AM, AM, LSB, AM, AM, AM, AM, USB, AM, AM, USB, AM, AM, USB, AM, AM};
 
 char *rdsMsg;
 char *stationName;

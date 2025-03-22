@@ -443,8 +443,8 @@ typedef struct
               Turn your receiver on with the encoder push button pressed at first time to RESET the eeprom content.
 */
 Band band[] = {
-    {"VHF2", FM_BAND_TYPE, 8750, 10800, 9900, 1, 0},
     {"VHF1", FM_BAND_TYPE, 6400, 8750, 6630, 1, 0},
+    {"VHF2", FM_BAND_TYPE, 8750, 10800, 9900, 1, 0},
     {"LW", MW_BAND_TYPE, 153, 522, 225, 3, 4},
     {"MW1", MW_BAND_TYPE, 513, 1728, 999, 2, 4},
     {"MW2", MW_BAND_TYPE, 1719, 3500, 2500, 1, 4},
